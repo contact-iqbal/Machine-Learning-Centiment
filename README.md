@@ -38,7 +38,7 @@ project/
 
 ---
 
-## ⚙️ Project Flow
+##  Project Flow
 
 1. **`src/controller/preprocessing.py`**  
    Membersihkan teks dari data mentah agar siap digunakan untuk pelatihan.
