@@ -24,6 +24,7 @@ env.bak/
 venv.bak/
 .ipynb_checkpoints
 
-data/processed/
-models/
+data/processed/train_clean.csv
+src/model/sentiment_model.joblib
+src/model/vectorizer.joblib
 reports/
