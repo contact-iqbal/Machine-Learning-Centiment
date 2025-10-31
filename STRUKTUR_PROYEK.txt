@@ -1,0 +1,148 @@
+═══════════════════════════════════════════════════════════════════════════
+       STRUKTUR PROYEK ANALISIS SENTIMEN SURVEI KEPUASAN SISWA SMK
+═══════════════════════════════════════════════════════════════════════════
+
+project_akhir_sentimen/
+│
+├── 📁 data/                           # Folder untuk semua data
+│   ├── 📁 raw/                        # Data mentah (asli)
+│   │   ├── 📄 Survey Kepuasan SMK_Train.csv    ✅ SUDAH ADA (60 baris)
+│   │   └── 📄 Survey Kepuasan SMK_Test.csv     ✅ SUDAH ADA (30 baris)
+│   │
+│   └── 📁 processed/                  # Data hasil preprocessing
+│       ├── 📄 train_clean.csv         ⏳ Akan dibuat saat preprocessing
+│       └── 📄 test_clean.csv          ⏳ Akan dibuat saat preprocessing
+│
+├── 📁 src/                            # Source code utama
+│   ├── 🐍 preprocessing.py            ✅ Pembersihan data teks
+│   ├── 🐍 train_model.py              ✅ Training model ML
+│   ├── 🐍 evaluate_model.py           ✅ Evaluasi performa model
+│   └── 🐍 predict.py                  ✅ Prediksi teks baru
+│
+├── 📁 model/                          # Model yang sudah dilatih
+│   ├── 📦 tfidf_vectorizer.joblib     ⏳ Akan dibuat saat training
+│   └── 📦 sentiment_model.joblib      ⏳ Akan dibuat saat training
+│
+├── 📁 app/                            # Aplikasi web
+│   └── 🌐 app.py                      ✅ Aplikasi Streamlit interaktif
+│
+├── 📁 reports/                        # Hasil evaluasi
+│   ├── 📊 confusion_matrix.png        ⏳ Akan dibuat saat evaluasi
+│   ├── 📄 evaluation_report.txt       ⏳ Akan dibuat saat evaluasi
+│   └── 📄 sample_prediction.csv       ⏳ Akan dibuat saat evaluasi
+│
+├── 📄 requirements.txt                ✅ Daftar library Python
+├── 🐍 run_all.py                      ✅ Script untuk menjalankan semua tahap
+├── 📖 README.md                       ✅ Dokumentasi lengkap
+├── 📖 PANDUAN_CEPAT.md                ✅ Panduan cepat (5 menit)
+└── 📄 STRUKTUR_PROYEK.txt             ✅ File ini
+
+═══════════════════════════════════════════════════════════════════════════
+                         PENJELASAN SETIAP FOLDER
+═══════════════════════════════════════════════════════════════════════════
+
+📁 data/raw/
+   Berisi file CSV data survei mentah yang akan diproses
+   - Format: komentar, sentimen
+   - Train: 60 data (30 positif, 30 negatif)
+   - Test: 30 data (15 positif, 15 negatif)
+
+📁 data/processed/
+   Berisi data yang sudah dibersihkan dan siap untuk training/testing
+   - Kolom tambahan: clean_text (hasil preprocessing)
+   - Dibuat otomatis oleh preprocessing.py
+
+📁 src/
+   Berisi semua kode Python untuk proyek
+   - preprocessing.py: Membersihkan teks (lowercase, hapus stopword, stemming)
+   - train_model.py: Melatih model dengan TF-IDF + Logistic Regression
+   - evaluate_model.py: Menguji akurasi model pada data testing
+   - predict.py: Prediksi sentimen untuk teks baru
+
+📁 model/
+   Menyimpan model machine learning yang sudah dilatih
+   - tfidf_vectorizer.joblib: Model untuk mengubah teks ke angka
+   - sentiment_model.joblib: Model klasifikasi sentimen
+
+📁 app/
+   Aplikasi web interaktif menggunakan Streamlit
+   - Input teks secara langsung
+   - Lihat prediksi real-time
+   - Tampilkan statistik model
+
+📁 reports/
+   Hasil evaluasi dan analisis model
+   - Confusion matrix (visualisasi)
+   - Laporan lengkap (akurasi, precision, recall)
+   - Contoh prediksi
+
+═══════════════════════════════════════════════════════════════════════════
+                            URUTAN EKSEKUSI
+═══════════════════════════════════════════════════════════════════════════
+
+Cara 1: Manual (Step by Step)
+   1. pip install -r requirements.txt
+   2. python src/preprocessing.py
+   3. python src/train_model.py
+   4. python src/evaluate_model.py
+   5. streamlit run app/app.py
+
+Cara 2: Otomatis (Semua Sekaligus)
+   1. pip install -r requirements.txt
+   2. python run_all.py
+
+═══════════════════════════════════════════════════════════════════════════
+                         FILE-FILE PENTING
+═══════════════════════════════════════════════════════════════════════════
+
+✅ SUDAH ADA (Siap Digunakan):
+   - Data CSV training dan testing
+   - Semua file Python (preprocessing, training, evaluasi, prediksi)
+   - Aplikasi Streamlit
+   - Dokumentasi lengkap
+
+⏳ AKAN DIBUAT OTOMATIS:
+   - Data processed (setelah preprocessing)
+   - Model ML (setelah training)
+   - Laporan evaluasi (setelah evaluasi)
+
+═══════════════════════════════════════════════════════════════════════════
+                        TEKNOLOGI YANG DIGUNAKAN
+═══════════════════════════════════════════════════════════════════════════
+
+🐍 Python                 - Bahasa pemrograman
+📊 Pandas                 - Pengolahan data CSV
+🤖 Scikit-learn           - Machine Learning (TF-IDF, Logistic Regression)
+🇮🇩 Sastrawi              - Stemming Bahasa Indonesia
+💾 Joblib                 - Menyimpan dan memuat model
+🌐 Streamlit              - Aplikasi web interaktif
+📈 Matplotlib & Seaborn   - Visualisasi grafik
+
+═══════════════════════════════════════════════════════════════════════════
+                          UKURAN FILE (Estimasi)
+═══════════════════════════════════════════════════════════════════════════
+
+Data CSV:                 ~15 KB
+Python Scripts:           ~30 KB
+Model (setelah training): ~500 KB
+Reports:                  ~50 KB
+Total Project Size:       ~1 MB (tanpa dependencies)
+
+═══════════════════════════════════════════════════════════════════════════
+                             CATATAN PENTING
+═══════════════════════════════════════════════════════════════════════════
+
+⚠️  Pastikan Python 3.8+ sudah terinstal
+⚠️  Install semua library di requirements.txt sebelum menjalankan
+⚠️  Data CSV harus ada di folder data/raw/
+⚠️  Jalankan tahap secara berurutan (preprocessing → training → evaluasi)
+⚠️  Akurasi 75-90% sudah bagus untuk proyek pembelajaran
+
+✨  Fokus pada pemahaman proses, bukan hasil sempurna!
+✨  Baca komentar di setiap file Python untuk penjelasan detail
+✨  Coba eksperimen dengan parameter berbeda
+✨  Gunakan aplikasi Streamlit untuk demo interaktif
+
+═══════════════════════════════════════════════════════════════════════════
+                          SELAMAT BELAJAR! 🎓
+═══════════════════════════════════════════════════════════════════════════

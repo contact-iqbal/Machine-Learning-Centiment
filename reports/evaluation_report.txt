@@ -1,0 +1,20 @@
+============================================================
+LAPORAN EVALUASI MODEL ANALISIS SENTIMEN
+============================================================
+
+Akurasi: 76.67%
+
+Confusion Matrix:
+[[11  4]
+ [ 3 12]]
+
+Classification Report:
+              precision    recall  f1-score   support
+
+     Negatif       0.79      0.73      0.76        15
+     Positif       0.75      0.80      0.77        15
+
+    accuracy                           0.77        30
+   macro avg       0.77      0.77      0.77        30
+weighted avg       0.77      0.77      0.77        30
+

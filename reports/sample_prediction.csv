@@ -1,0 +1,21 @@
+komentar,sentimen,prediksi,benar
+Sangat puas dengan pelayanan dan fasilitas sekolah ini.,Positif,Positif,True
+Guru-guru sangat profesional dalam mengajar.,Positif,Positif,True
+Lab komputer dilengkapi dengan software terbaru.,Positif,Positif,True
+Sekolah memberikan banyak kesempatan untuk berkembang.,Positif,Positif,True
+Lingkungan belajar sangat mendukung prestasi siswa.,Positif,Positif,True
+Ekstrakurikuler robotik sangat menarik dan edukatif.,Positif,Positif,True
+Kantin menyediakan menu sehat dan bergizi.,Positif,Negatif,False
+Perpustakaan memiliki koleksi buku yang sangat lengkap.,Positif,Positif,True
+Ruang kelas bersih dan rapi setiap hari.,Positif,Negatif,False
+Guru selalu siap membantu siswa yang kesulitan belajar.,Positif,Positif,True
+Sekolah sering mengadakan study tour yang bermanfaat.,Positif,Negatif,False
+Alat praktik selalu tersedia dan dalam kondisi prima.,Positif,Positif,True
+Sistem absensi digital memudahkan monitoring kehadiran.,Positif,Positif,True
+Program beasiswa membantu siswa yang berprestasi.,Positif,Positif,True
+Kegiatan upacara selalu tertib dan penuh makna.,Positif,Positif,True
+Sangat kecewa dengan kondisi sekolah yang tidak terawat.,Negatif,Negatif,True
+Fasilitas sangat minim dan tidak layak digunakan.,Negatif,Negatif,True
+Guru jarang masuk dan sering meninggalkan kelas.,Negatif,Negatif,True
+Tidak ada program pengembangan siswa yang jelas.,Negatif,Negatif,True
+Kantin tidak higienis dan makanannya tidak enak.,Negatif,Positif,False
