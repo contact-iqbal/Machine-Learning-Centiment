@@ -1,21 +1,21 @@
-komentar,sentimen,prediksi,benar
-Sangat puas dengan pelayanan dan fasilitas sekolah ini.,Positif,Positif,True
-Guru-guru sangat profesional dalam mengajar.,Positif,Positif,True
-Lab komputer dilengkapi dengan software terbaru.,Positif,Positif,True
-Sekolah memberikan banyak kesempatan untuk berkembang.,Positif,Positif,True
-Lingkungan belajar sangat mendukung prestasi siswa.,Positif,Positif,True
-Ekstrakurikuler robotik sangat menarik dan edukatif.,Positif,Positif,True
-Kantin menyediakan menu sehat dan bergizi.,Positif,Negatif,False
-Perpustakaan memiliki koleksi buku yang sangat lengkap.,Positif,Positif,True
-Ruang kelas bersih dan rapi setiap hari.,Positif,Negatif,False
-Guru selalu siap membantu siswa yang kesulitan belajar.,Positif,Positif,True
-Sekolah sering mengadakan study tour yang bermanfaat.,Positif,Negatif,False
-Alat praktik selalu tersedia dan dalam kondisi prima.,Positif,Positif,True
-Sistem absensi digital memudahkan monitoring kehadiran.,Positif,Positif,True
-Program beasiswa membantu siswa yang berprestasi.,Positif,Positif,True
-Kegiatan upacara selalu tertib dan penuh makna.,Positif,Positif,True
-Sangat kecewa dengan kondisi sekolah yang tidak terawat.,Negatif,Negatif,True
-Fasilitas sangat minim dan tidak layak digunakan.,Negatif,Negatif,True
-Guru jarang masuk dan sering meninggalkan kelas.,Negatif,Negatif,True
-Tidak ada program pengembangan siswa yang jelas.,Negatif,Negatif,True
-Kantin tidak higienis dan makanannya tidak enak.,Negatif,Positif,False
+Survey,Label,Prediksi,Benar
+Sangat baik dalam menjelaskan materi dan juga menyampikan tugas tugas,positif,positif,True
+walaupun yang mengajar selalu asisten tetapi materi yang disampaikan sangat baik.,positif,positif,True
+semoga lebih baik kedepannya,positif,positif,True
+Pelajaran dilaksanakan secara offline,negatif,negatif,True
+Bismillah lancar,positif,positif,True
+Saran untuk pembelajaran Pelajaran elektronika telekomunikasi adalah semoga semakin lebih baik lagi dalam menyampaikan materi,positif,positif,True
+Gurunya asik,positif,positif,True
+Terimakasih atas materi yang disampaikan,positif,positif,True
+Ditingkatkan,positif,positif,True
+guru Pelajaran cukup baik dalam melakukan bimbingan belajar Pelajaran Internet Of Things (IoT),positif,positif,True
+Mohon untuk mengeshare materi pembelajaran ke elearing,negatif,negatif,True
+saran saya untuk pemberian referensi materi agak kurang karena hanya 2 referensi dimana untuk mendapatkannya agak sulit,negatif,negatif,True
+Bu selama mengajar dan menyampaikan materi sudahn sangat baik. Walaupun statistika itu sulit tapi alhamdulillah mudah menyerap di otak,positif,positif,True
+terus baik,positif,positif,True
+Sudah bagus dan untuk kedepannya bisa lebih baik lagi,positif,positif,True
+mungkin bisa di beri tugas agar kta bsa mempelajarinya dari padad tiap pertemuan kaya ceramah,negatif,negatif,True
+Semoga kedepannya lebih bagus,positif,positif,True
+Saran: Tetap berperilaku yang adil di semua Siswa,negatif,negatif,True
+ditambah lagi tugas untuk Siswa agar mampu memahami,negatif,negatif,True
+Sudah sangat baik dalam menyampaikan materi pembelajaran,positif,positif,True
