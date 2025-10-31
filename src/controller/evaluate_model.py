@@ -45,18 +45,6 @@ def evaluate_model(
     # Pastikan folder report ada
     os.makedirs(report_dir, exist_ok=True)
 
-    # Simpan confusion matrix visual
-    plt.figure(figsize=(6, 5))
-    sns.heatmap(cm, annot=True, fmt='d', cmap='Reds',
-                xticklabels=['Negatif', 'Positif'],
-                yticklabels=['Negatif', 'Positif'])
-    plt.title('Confusion Matrix - Analisis Sentimen')
-    plt.ylabel('Label Sebenarnya')
-    plt.xlabel('Prediksi Model')
-    plt.tight_layout()
-    plt.savefig(os.path.join(report_dir, 'confusion_matrix.png'), dpi=300)
-    plt.close()
-
     # Simpan laporan evaluasi
     with open(os.path.join(report_dir, 'evaluation_report.txt'), 'w', encoding='utf-8') as f:
         f.write(f"Akurasi: {accuracy * 100:.2f}%\n\n")

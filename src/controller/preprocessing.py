@@ -34,6 +34,8 @@ def clean_text(text):
 
     return text
 
+
+
 def preprocess_dataset(input_path, output_path, 
                        text_column='Survey', 
                        label_column='Label'
@@ -52,7 +54,8 @@ def preprocess_dataset(input_path, output_path,
         print("Gagal membaca file:", e)
         return
 
-    # Validasi kolom
+
+
     if text_column not in df.columns or label_column not in df.columns:
         print(f"Kolom '{text_column}' atau '{label_column}' tidak ditemukan.")
         print({list(df.columns)})
@@ -64,12 +67,13 @@ def preprocess_dataset(input_path, output_path,
     
     df_clean[label_column] = df_clean[label_column].str.lower().str.strip()
 
+
+
     os.makedirs(os.path.dirname(output_path), exist_ok=True)
     df_clean.to_csv(output_path, index=False, encoding='utf-8-sig')
     
-# ---------------------------------------------- #
 
-# ---------------------------------------------- #
+
 
 if __name__ == "__main__":
     preprocess_dataset(

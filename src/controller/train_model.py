@@ -30,7 +30,8 @@ def train_sentiment_model(
 
     os.makedirs(os.path.dirname(model_path), exist_ok=True)
 
-    # Simpan model dan vectorizer
+
+
     joblib.dump(model, model_path)
     joblib.dump(vectorizer, vectorizer_path)
     if verbose:

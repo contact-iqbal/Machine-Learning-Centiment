@@ -32,7 +32,7 @@ def main():
         st.error("Model belum tersedia. Jalankan training terlebih dahulu.")
         return
 
-    # --------------------------------------------------------------
+
     st.subheader("Input Komentar atau File CSV")
     st.markdown("Masukkan komentar siswa atau unggah file CSV untuk menganalisis sentimen.")
 
@@ -50,7 +50,6 @@ def main():
 
     chart_col, table_col = st.columns([2, 1])
 
-    # --------------------------------------------------------------
     if analyze_button:
         if uploaded_file is not None:
             try:
@@ -76,52 +75,66 @@ def main():
                 lambda x: predict_sentiment(str(x), model, vectorizer)
             ))
 
+            with chart_col:
+                st.subheader("Distribusi Sentimen (Dari Data Tabel)")
+
+                sentiment_counts = df['Prediksi'].value_counts()
+                if sentiment_counts.empty:
+                    st.warning("Tidak ada data sentimen yang bisa divisualisasikan.")
+                else:
+                    fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(10, 4))
+                    colors = ['#4CAF50' if s == 'Positif' else '#F44336' for s in sentiment_counts.index]
+
+
+                    bars = ax1.bar(
+                        sentiment_counts.index,
+                        [0] * len(sentiment_counts),
+                        color=colors,
+                        width=0.6
+                    )
+                    ax1.set_ylim(0, sentiment_counts.max() * 1.2)
+                    ax1.set_ylabel("Jumlah Komentar", fontsize=11)
+                    ax1.set_xlabel("Kategori Sentimen", fontsize=11)
+                    ax1.spines['top'].set_visible(False)
+                    ax1.spines['right'].set_visible(False)
+                    ax1.grid(axis='y', linestyle='--', alpha=0.6)
+
+                    frames = 20
+                    for frame in range(frames + 1):
+                        progress = frame / frames
+                        for bar, target_height in zip(bars, sentiment_counts.values):
+                            bar.set_height(target_height * progress)
+                        plt.pause(0.02)
+
+                    for bar, val in zip(bars, sentiment_counts.values):
+                        ax1.text(
+                            bar.get_x() + bar.get_width() / 2,
+                            val + (sentiment_counts.max() * 0.03),
+                            f"{int(val)}",
+                            ha='center', va='bottom',
+                            fontsize=10,
+                            color='black'
+                        )
+
+                    ax2.pie(
+                        sentiment_counts.values,
+                        labels=sentiment_counts.index,
+                        autopct='%1.1f%%',
+                        colors=colors,
+                        startangle=90,
+                        counterclock=False,
+                        wedgeprops={'edgecolor': 'white'}
+                    )
+
+                    plt.tight_layout()
+                    st.pyplot(fig, use_container_width=True)
 
             with table_col:
                 st.subheader("Laporan Data (Tabel)")
                 st.dataframe(df[['Komentar', 'Prediksi', 'Kepercayaan']], use_container_width=True)
 
-
-            with chart_col:
-                st.subheader("Distribusi Sentimen (Dari Data Tabel)")
-
-                # Hitung jumlah dari kolom Prediksi
-                sentiment_counts = df['Prediksi'].value_counts()
-
-                if sentiment_counts.empty:
-                    st.warning("Tidak ada data sentimen yang bisa divisualisasikan.")
-                else:
-                    fig, ax = plt.subplots(figsize=(8, 4))
-                    bars = ax.bar(
-                        sentiment_counts.index,
-                        sentiment_counts.values,
-                        color=['#4CAF50' if s == 'Positif' else '#F44336' for s in sentiment_counts.index],
-                        width=0.6
-                    )
-
-                    for bar in bars:
-                        height = bar.get_height()
-                        ax.text(
-                            bar.get_x() + bar.get_width() / 2,
-                            height + 0.5,
-                            f'{int(height)}',
-                            ha='center',
-                            va='bottom',
-                            fontsize=11,
-                            color='black'
-                        )
-
-                    ax.set_ylabel("Jumlah Komentar", fontsize=11)
-                    ax.set_xlabel("Kategori Sentimen", fontsize=11)
-                    ax.set_title("Distribusi Sentimen Berdasarkan Data Tabel", fontsize=13, weight='bold')
-                    ax.spines['top'].set_visible(False)
-                    ax.spines['right'].set_visible(False)
-                    ax.grid(axis='y', linestyle='--', alpha=0.6)
-                    plt.tight_layout()
-
-                    st.pyplot(fig, use_container_width=True)
-
         elif input_text.strip():
+            # === MODE NPUT TUNGGAL ===
             sentiment, confidence = predict_sentiment(input_text, model, vectorizer)
             cleaned = clean_text(input_text)
 
@@ -141,5 +154,6 @@ def main():
             st.warning("Masukkan teks atau unggah file CSV terlebih dahulu.")
 
 
+# MAIN RUNNR
 if __name__ == "__main__":
     main()
