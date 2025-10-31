@@ -3,7 +3,7 @@ Proyek ini dibuat untuk memahami dasar **Data Science** dan **Machine Learning**
 
 ---
 
-## 📁 Folder Structure
+##  Folder Structure
 
 ```
 project/
@@ -57,7 +57,7 @@ project/
 
 ---
 
-## 🧩 Library Included
+##  Library Included
 
 | Library | Fungsi Utama |
 |----------|---------------|
@@ -69,7 +69,7 @@ project/
 
 ---
 
-## 📄 Dataset
+##  Dataset
 
 **File:** `Survey Kepuasan SMK_Train.csv`  
 **Fungsi:** Training Data  
@@ -77,7 +77,7 @@ project/
 
 ---
 
-## 🚀 How to Run
+##  How to Run
 
 ```bash
 # 1. Instal dependensi
@@ -95,10 +95,3 @@ python src/controller/evaluate_model.py
 # 5. Jalankan aplikasi Streamlit
 streamlit run src/view/app.py
 ```
-
----
-
-## ✨ Catatan
-- Pastikan file dataset (`Survey Kepuasan SMK_Train.csv`) sudah ada di folder `data/raw/`.
-- Semua output hasil preprocessing, model, dan evaluasi akan tersimpan di folder `data/processed/`, `src/model/`, dan `reports/`.
-- Aplikasi web bisa diakses di browser setelah menjalankan perintah Streamlit.
