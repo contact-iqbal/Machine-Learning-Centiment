@@ -23,34 +23,33 @@ def load_model_cache():
 
 
 def main():
-    st.title("Analisis Sentimen Survei Kepuasan Siswa SMK")
+    st.title("Data Science - Machine learning")
     st.markdown("---")
 
     try:
         model, vectorizer = load_model_cache()
     except FileNotFoundError:
-        st.error("Model belum tersedia. Jalankan training terlebih dahulu.")
+        st.error("Model belum tersedia")
         return
 
 
-    st.subheader("Input Komentar atau File CSV")
-    st.markdown("Masukkan komentar siswa atau unggah file CSV untuk menganalisis sentimen.")
+    st.subheader("Input manual / upload .CSV")
 
     col_input1, col_input2 = st.columns([2, 1])
     with col_input1:
         input_text = st.text_area(
-            "Masukkan komentar:",
+            "komentar:",
             height=150,
-            placeholder="Contoh: Guru sangat baik dalam menjelaskan materi."
+            placeholder="Tulis komentar di sini..."
         )
     with col_input2:
-        uploaded_file = st.file_uploader("Atau upload file CSV", type=['csv'])
+        uploaded_file = st.file_uploader("upload file CSV", type=['csv'])
 
-    analyze_button = st.button("Analisis Sentimen", use_container_width=True)
+    tombol_analytics = st.button("Analyze", use_container_width=True)
 
     chart_col, table_col = st.columns([2, 1])
 
-    if analyze_button:
+    if tombol_analytics:
         if uploaded_file is not None:
             try:
                 sample = uploaded_file.read().decode('utf-8-sig')
@@ -58,7 +57,7 @@ def main():
                 uploaded_file.seek(0)
                 df = pd.read_csv(uploaded_file, sep=delimiter, encoding='utf-8-sig', on_bad_lines='skip')
             except Exception as e:
-                st.error(f"Gagal membaca file CSV: {e}")
+                st.error(f"failed reading file {e}")
                 return
 
             if 'Komentar' not in df.columns:
@@ -67,29 +66,28 @@ def main():
 
             df = df[df['Komentar'].notna()]
             if df.empty:
-                st.warning("Tidak ada komentar valid dalam file CSV.")
+                st.error("Tidak ada komentar valid dalam file CSV.")
                 return
 
             df['clean_text'] = df['Komentar'].apply(clean_text)
-            df['Prediksi'], df['Kepercayaan'] = zip(*df['Komentar'].apply(
+            df['Sentimen'], df['Persentase'] = zip(*df['Komentar'].apply(
                 lambda x: predict_sentiment(str(x), model, vectorizer)
             ))
 
             with chart_col:
-                st.subheader("Distribusi Sentimen (Dari Data Tabel)")
+                st.subheader("Sentimen")
 
-                sentiment_counts = df['Prediksi'].value_counts()
+                sentiment_counts = df['Sentimen'].value_counts()
                 if sentiment_counts.empty:
-                    st.warning("Tidak ada data sentimen yang bisa divisualisasikan.")
+                    st.error("Tidak ada data sentimen yang bisa divisualisasikan.")
                 else:
                     fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(10, 4))
-                    colors = ['#4CAF50' if s == 'Positif' else '#F44336' for s in sentiment_counts.index]
 
 
                     bars = ax1.bar(
                         sentiment_counts.index,
                         [0] * len(sentiment_counts),
-                        color=colors,
+                        color=['#66b3ff', '#ff9999'],
                         width=0.6
                     )
                     ax1.set_ylim(0, sentiment_counts.max() * 1.2)
@@ -99,14 +97,8 @@ def main():
                     ax1.spines['right'].set_visible(False)
                     ax1.grid(axis='y', linestyle='--', alpha=0.6)
 
-                    frames = 20
-                    for frame in range(frames + 1):
-                        progress = frame / frames
-                        for bar, target_height in zip(bars, sentiment_counts.values):
-                            bar.set_height(target_height * progress)
-                        plt.pause(0.02)
-
                     for bar, val in zip(bars, sentiment_counts.values):
+                        bar.set_height(val)
                         ax1.text(
                             bar.get_x() + bar.get_width() / 2,
                             val + (sentiment_counts.max() * 0.03),
@@ -120,7 +112,7 @@ def main():
                         sentiment_counts.values,
                         labels=sentiment_counts.index,
                         autopct='%1.1f%%',
-                        colors=colors,
+                        colors=['#66b3ff', '#ff9999'],
                         startangle=90,
                         counterclock=False,
                         wedgeprops={'edgecolor': 'white'}
@@ -130,8 +122,8 @@ def main():
                     st.pyplot(fig, use_container_width=True)
 
             with table_col:
-                st.subheader("Laporan Data (Tabel)")
-                st.dataframe(df[['Komentar', 'Prediksi', 'Kepercayaan']], use_container_width=True)
+                st.subheader("Laporan Data")
+                st.dataframe(df[['Komentar', 'Sentimen', 'Persentase']], use_container_width=True)
 
         elif input_text.strip():
             # === MODE NPUT TUNGGAL ===
@@ -139,7 +131,7 @@ def main():
             cleaned = clean_text(input_text)
 
             with chart_col:
-                st.subheader("Hasil Prediksi Sentimen")
+                st.subheader("Hasil Sentimen Sentimen")
                 st.write(f"Sentimen terdeteksi: **{sentiment}**")
                 st.write(f"Tingkat keyakinan: **{confidence:.2f}%**")
 
@@ -151,7 +143,7 @@ def main():
                 st.text(cleaned)
 
         else:
-            st.warning("Masukkan teks atau unggah file CSV terlebih dahulu.")
+            st.error("No text or file uploaded!")
 
 
 # MAIN RUNNR
