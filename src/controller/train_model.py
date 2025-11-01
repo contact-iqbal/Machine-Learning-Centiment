@@ -12,7 +12,7 @@ def train_sentiment_model(
     verbose=True
 ):
     if verbose:
-        print("mulai")
+        print("Mulai")
 
     df_train = pd.read_csv(train_path, encoding='utf-8')
 
@@ -30,13 +30,11 @@ def train_sentiment_model(
 
     os.makedirs(os.path.dirname(model_path), exist_ok=True)
 
-
-
     joblib.dump(model, model_path)
     joblib.dump(vectorizer, vectorizer_path)
     if verbose:
-        print(f"Model dan vectorizer disimpan di '{model_path}' dan '{vectorizer_path}'")
-        print(f"Akurasi pada data training: {train_accuracy * 100:.2f}%")
+        print(f"Model dan vectorizer disimpan di {model_path} dan {vectorizer_path}")
+        #print(f"Akurasi pada data training: {train_accuracy * 100:.2f}%")
         
     return model, vectorizer
 

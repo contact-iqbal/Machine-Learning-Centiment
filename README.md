@@ -93,5 +93,5 @@ python src/controller/train_model.py
 python src/controller/evaluate_model.py
 
 # 5. Jalankan aplikasi Streamlit
-streamlit run src/view/app.py
+streamlit run src/view/app.py / kalo gabisa pake python -m streamlit run src/view/app.py
 ```

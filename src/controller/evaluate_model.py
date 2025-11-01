@@ -60,12 +60,12 @@ def evaluate_model(
     sample_results.head(20).to_csv(os.path.join(report_dir, 'sample_prediction.csv'), index=False)
 
     if verbose:
-        print(f"Akurasi model: {accuracy * 100:.2f}%")
+        #print(f"Akurasi model: {accuracy * 100:.2f}%")
         print(f"Hasil evaluasi disimpan di folder: {report_dir}")
+        print("Selesai")
 
     return accuracy, cm, report
 
 
 if __name__ == "__main__":
     evaluate_model('data/processed/train_clean.csv')
-

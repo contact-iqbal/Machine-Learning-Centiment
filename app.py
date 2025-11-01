@@ -7,13 +7,13 @@ import matplotlib.pyplot as plt
 
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 try:
-    from controller.preprocessing import clean_text
-    from controller.predict import predict_sentiment
+    from src.controller.preprocessing import clean_text
+    from src.controller.predict import predict_sentiment
 except ModuleNotFoundError as e:
     st.error(f"Modul tidak ditemukan: {e}")
     st.stop()
 
-st.set_page_config(page_title="Analisis Sentimen SMK", layout="wide")
+st.set_page_config(page_title="Analisis Sentimen SMK", layout="wide",)
 
 @st.cache_resource
 def load_model_cache():
@@ -25,13 +25,11 @@ def load_model_cache():
 def main():
     st.title("Data Science - Machine learning")
     st.markdown("---")
-
     try:
         model, vectorizer = load_model_cache()
     except FileNotFoundError:
         st.error("Model belum tersedia")
         return
-
 
     st.subheader("Input manual / upload .CSV")
 
@@ -126,7 +124,6 @@ def main():
                 st.dataframe(df[['Komentar', 'Sentimen', 'Persentase']], use_container_width=True)
 
         elif input_text.strip():
-            # === MODE NPUT TUNGGAL ===
             sentiment, confidence = predict_sentiment(input_text, model, vectorizer)
             cleaned = clean_text(input_text)
 
@@ -137,15 +134,13 @@ def main():
 
             with table_col:
                 st.subheader("Detil Data")
-                st.write("Teks Asli:")
-                st.text(input_text)
-                st.write("Setelah Preprocessing:")
-                st.text(cleaned)
+                st.write(f"Teks Asli: {input_text}")
+                #st.text(input_text)
+                st.write(f"Setelah Preprocessing: {cleaned}")
+                #st.text(cleaned)
 
         else:
             st.error("No text or file uploaded!")
 
-
-# MAIN RUNNR
 if __name__ == "__main__":
     main()

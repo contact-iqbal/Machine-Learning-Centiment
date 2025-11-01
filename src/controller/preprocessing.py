@@ -10,10 +10,6 @@ stemmer = factory_stemmer.create_stemmer()
 factory_stopword = StopWordRemoverFactory()
 stopword_remover = factory_stopword.create_stop_word_remover()
 
-# ---------------------------------------------- #
-
-# ---------------------------------------------- #
-
 def clean_text(text):
     if pd.isna(text):
         return ""
@@ -34,27 +30,24 @@ def clean_text(text):
 
     return text
 
-
-
 def preprocess_dataset(input_path, output_path, 
                        text_column='Survey', 
                        label_column='Label'
                        ):
-
+    print("Mulai")
     print("reading file:", input_path)
 
     #delimiter
-    with open(input_path, 'r', encoding='utf-8') as f:
-        sample = f.readline()
-    sep = ';' if sample.count(';') > sample.count(',') else ','
+    #with open(input_path, 'r', encoding='utf-8') as f:
+    #    sample = f.readline()
+    # sep = ';' if sample.count(';') > sample.count(',') else ','
+    sep = ';'
 
     try:
         df = pd.read_csv(input_path, sep=sep, encoding='utf-8', on_bad_lines='skip')
     except Exception as e:
         print("Gagal membaca file:", e)
         return
-
-
 
     if text_column not in df.columns or label_column not in df.columns:
         print(f"Kolom '{text_column}' atau '{label_column}' tidak ditemukan.")
@@ -67,13 +60,11 @@ def preprocess_dataset(input_path, output_path,
     
     df_clean[label_column] = df_clean[label_column].str.lower().str.strip()
 
-
-
     os.makedirs(os.path.dirname(output_path), exist_ok=True)
+    print(f"file disimpan di: {output_path}")
     df_clean.to_csv(output_path, index=False, encoding='utf-8-sig')
+    print("Selesai")
     
-
-
 
 if __name__ == "__main__":
     preprocess_dataset(
