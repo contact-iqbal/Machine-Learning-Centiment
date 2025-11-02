@@ -95,3 +95,7 @@ python src/controller/evaluate_model.py
 # 5. Jalankan aplikasi Streamlit
 streamlit run src/view/app.py / kalo gabisa pake python -m streamlit run src/view/app.py
 ```
+
+## License
+
+[MIT License](https://github.com/contact-iqbal/ML-Centiment/blob/main/LICENSE) 2925 Contact.Iqbal
