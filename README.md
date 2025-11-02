@@ -98,4 +98,4 @@ streamlit run src/view/app.py / kalo gabisa pake python -m streamlit run src/vie
 
 ## License
 
-[MIT License](https://github.com/contact-iqbal/ML-Centiment/blob/main/LICENSE) 2925 Contact.Iqbal
+[MIT License](https://github.com/contact-iqbal/ML-Centiment/blob/main/LICENSE) 2025 Contact.Iqbal
