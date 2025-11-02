@@ -3,7 +3,7 @@ Proyek ini dibuat untuk memahami dasar **Data Science** dan **Machine Learning**
 
 ---
 
-##  Folder Structure
+##  Project Structure
 
 ```
 project/
@@ -13,8 +13,11 @@ project/
 │   └── processed/
 │       └── train_clean.csv
 │
+├── pages/
+│   ├── Preprocessing.py 
+│   └── Train_Sentiment.py
+│
 ├── reports/
-│   ├── confusion_matrix.png
 │   ├── evaluation_report.txt
 │   └── sample_prediction.csv
 │
@@ -25,14 +28,13 @@ project/
 │   │   ├── evaluate_model.py
 │   │   └── predict.py
 │   │
-│   ├── model/
-│   │   ├── sentiment_model.joblib
-│   │   └── tfidf_vectorizer.joblib
-│   │
-│   └── view/
-│       └── app.py
+│   └── model/
+│       ├── sentiment_model.joblib
+│       └── tfidf_vectorizer.joblib
 │
+├── app.py
 ├── requirements.txt
+├── LICENSE.md
 └── README.md
 ```
 
@@ -52,7 +54,7 @@ project/
 4. **`src/controller/predict.py`**  
    Menggunakan model yang sudah dilatih untuk memprediksi sentimen dari kalimat baru.
 
-5. **`src/view/app.py`**  
+5. **`app.py`**  
    Menjalankan aplikasi interaktif berbasis Streamlit untuk melakukan analisis sentimen secara visual.
 
 ---
@@ -93,9 +95,9 @@ python src/controller/train_model.py
 python src/controller/evaluate_model.py
 
 # 5. Jalankan aplikasi Streamlit
-streamlit run src/view/app.py / kalo gabisa pake python -m streamlit run src/view/app.py
+streamlit run app.py kalo gabisa pake python -m streamlit run app.py
 ```
 
 ## License
 
-[MIT License](https://github.com/contact-iqbal/ML-Centiment/blob/main/LICENSE) 2025 Contact.Iqbal
+[MIT License](https://github.com/contact-iqbal/ML-Centiment/blob/main/LICENSE) 2025 smk-sentiment-analyzer
