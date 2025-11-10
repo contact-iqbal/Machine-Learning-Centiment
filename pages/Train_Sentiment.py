@@ -64,7 +64,6 @@ if st.button("Mulai Training"):
     values = [true_positive, true_negative, false_positive, false_negative]
     colors = ["#4CAF50", "#2196F3", "#FF9800", "#F44336"]
 
-    st.title("Model Evaluation Results")
     if accuracy:
         st.metric("Accuracy", f"{accuracy:.2f}%")
     if cm is not None:
@@ -80,3 +79,11 @@ if st.button("Mulai Training"):
         st.dataframe(report_df.style.format(precision=2))
         
     st.success("Training selesai!")
+
+st.write("---")
+
+st.write("Setelah melakukan training pada model sentiment, berikut adalah hasil evaluasi yang diperoleh:")
+with open("reports/evaluation_report.txt", "r", encoding="utf-8") as report_file:
+    report_content = report_file.read()
+st.code(report_content, language=None)
+

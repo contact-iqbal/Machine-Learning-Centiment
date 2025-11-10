@@ -1,16 +1,16 @@
-Akurasi: 91.55%
+Akurasi: 93.33%
 
 Confusion Matrix:
-[[1017   70]
- [ 173 1617]]
+[[1933  122]
+ [ 166 2096]]
 
 Classification Report:
               precision    recall  f1-score   support
 
-     negatif       0.85      0.94      0.89      1087
-     positif       0.96      0.90      0.93      1790
+     negatif       0.92      0.94      0.93      2055
+     positif       0.94      0.93      0.94      2262
 
-    accuracy                           0.92      2877
-   macro avg       0.91      0.92      0.91      2877
-weighted avg       0.92      0.92      0.92      2877
+    accuracy                           0.93      4317
+   macro avg       0.93      0.93      0.93      4317
+weighted avg       0.93      0.93      0.93      4317
 
